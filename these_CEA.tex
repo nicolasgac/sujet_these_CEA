@@ -1,0 +1,134 @@
+
+\documentclass[a4paper,11pt]{article}
+
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{24.2cm}
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\topmargin}{-1.24cm}
+\setlength{\parskip}{0pt}
+
+
+\usepackage{pstricks}
+\usepackage{amssymb,enumerate,theorem,fancyhdr}
+\usepackage{epic,eepic}
+%\usepackage[draft]{graphicx}
+\usepackage{graphicx}
+%\usepackage{bibtex}
+\usepackage[numbers]{natbib}
+\usepackage[official]{eurosym}
+\usepackage[english]{babel}
+%\usepackage{natbib}
+\usepackage{textcomp}
+\usepackage{subcaption}
+%\usepackage{color}
+%\usepackage{soul}
+\usepackage{url}
+\usepackage{tabularx}
+%\usepackage{tikz,pgfgantt}
+\graphicspath{{./Figs/}}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+            
+\usepackage{acronym}
+
+\usepackage{comment}
+
+\begin{document}
+\pagestyle{fancy}
+\lhead[]%
+      {\fancyplain{}{\includegraphics[scale=0.35]{L2S_tutelles_vertical}   }}
+      \chead{\includegraphics[scale=0.3]{CEA-list.jpg}} 
+\rhead[]%
+      {\fancyplain{}{\includegraphics[scale=0.5]{logo_Saclay}   }      }%on peut mettre du\bfseries
+\rfoot{}\cfoot{}
+\vspace*{1cm}
+\begin{center}
+  \textbf{\textbf{\Large{Multi-architecture programming for high performance reconstruction in passive tomography
+  }}} \\  
+  \vspace{0.2 cm}
+  \small{Universit\'e Paris Saclay PhD thesis (CEA funding) \\ \vspace{0.1 cm} autumn 2021/autumn 2024 }
+\end{center}
+\small{
+\begin{tabular}{lll}
+\textbf{Keywords:}&\multicolumn{2}{l}{parallel computing,  GPU, FPGA, HLS, tomography, SHM (Structural Health Monitoring)} \\
+\\
+ \multicolumn{3}{l}{\textbf{\href{http://www-list.cea.fr}{CEA-List (Saclay)}}}\\
+ \multicolumn{3}{l}{Département Imagerie Simulation pour le Contrôle (DISC) }\\
+  \multicolumn{3}{l}{Laboratoire de Développement Informatique (LDI)}\\
+ \underline{CEA supervisor}: &hamza.chouh@cea.fr &\\
+ \\
+ \multicolumn{3}{l}{\textbf{\href{https://l2s.centralesupelec.fr}{Laboratoire des Signaux et Systèmes (L2S)}}}\\
+ \multicolumn{3}{l}{\href{https://l2s.centralesupelec.fr/en/research-fields/signal-and-statistics/gpi-en/}{Inverse Problem Group (GPI)}}\\
+ \underline{L2S supervisor}: & nicolas.gac@l2s.centralesupelec.fr&\href{https://l2s.centralesupelec.fr/u/gac-nicolas/}{https://l2s.centralesupelec.fr/u/gac-nicolas/}\\
+ (\textit{directeur de thèse})&&\\
+
+
+\end{tabular}\\ 
+
+
+
+%\begin{tabular}{lclr}
+%\underline{\textbf{Contacts:}}&L2S& nicolas.gac@l2s.centralesupelec.fr& 01 69 85 17 38\\
+%&&\multicolumn{2}{l}{\href{http://nicolas.gac.l2s.centralesupelec.fr}{http://nicolas.gac.l2s.centralesupelec.fr}}\\
+%& &francois.orieux@l2s.centralesupelec.fr& 01 69 85 17 47 \\
+%&&\multicolumn{2}{l}{\href{http://nicolas.gac.l2s.centralesupelec.fr}{http://nicolas.gac.l2s.centralesupelec.fr}}\\
+%&SATIE& thomas.rodet@ens-cachan.fr&01 47 40 21 13 \\
+%\end{tabular}\\ 
+\vspace{-0.2 cm}
+\paragraph{Structural Health Monitoring (SHM)} is an approach to non-destructive testing that aims to integrate inspection tools directly into the targeted structures to facilitate data acquisition and avoid the regular mobilization of inspection resources (human, material) the immobilization of equipment. As part of this approach, passive ultrasonic tomography exploits the structural noise of waveguide-like parts to monitor variations in their thickness, to detect the appearance of corrosion or erosion defects. This process involves using several signal processing algorithms applied to large amounts of data and integrated into an embedded system.
+
+\begin{figure}[!h]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[height=0.8\textwidth]{demo_shm.png}
+        \caption{Passive tomography using structural noise on a pipe}
+    \end{subfigure}
+    \hspace{0.5cm}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[height=0.8\textwidth]{image_shm.png}
+        \caption{Thickness values over the inspected area}
+    \end{subfigure}
+\end{figure}
+
+
+\paragraph{PhD Goal.} Intending to integrate SHM controls in compact and energy-efficient equipment, this PhD thesis aims at developing an embedded signal processing chain that meets the needs of passive tomography. Therefore, it will be necessary to determine the most suitable hardware architectures and realize highly-optimized implementations of the algorithms involved in the processing chain by making them evolve according to the performance needs. To this end, different hardware architectures (GPU, low power GPU, FPGA) will be studied during the thesis by comparing generic programming approaches (Sycl) and implementations dedicated to each architecture.
+
+\begin{figure}[!h]
+\begin{subfigure}[c]{0.34\textwidth}
+\centering
+\includegraphics[width=\textwidth]{agx_xavier.png}
+\caption{embedded GPU board - \textit{Nvidia Xavier}}
+\end{subfigure}
+\begin{subfigure}[c]{0.64\textwidth}
+\centering
+\includegraphics[width=\textwidth]{FPGA_opencL_SDK}
+\caption{High Level Synthesis (HLS) through Intel OpenCL SDK on an FPGA board}
+\end{subfigure}
+\end{figure}
+
+\newpage
+\paragraph{A collaborative work.} This PhD will take place at CEA-List (employer) and L2S (PhD direction). 
+
+The \textit{Groupe Probl\`emes Inverses} (GPI) at L2S has mixed expertise in architecture and signal processing with long-term experience in tomography reconstruction. One research axis of this team is \textbf{Algorithm Architecture co-design} (\textit{Ad\'equation Algorithme Architecture}). The AAA methodology aims to find the best match between the algorithms and the targeted architecture to respect constraints in computing time, energy consumption, cost and result accuracy. The GPI has applied it mainly for tomography reconstruction on GPU \cite{chapdelaine:hal-01771489v1} or FPGA boards through High Level Synthesis tools \cite{martelli:hal-01831884}, receiving for this work  with a student team an Intel price in the HPC category \cite{martelli:hal-01851828}.
+
+The \textit{D\'epartement d'Imagerie et de Simulation pour le Contrôle} (DISC) is part of the French nuclear energy commission (CEA) and focuses on various research topics linked to nondestructive testing, including control techniques and physical models for simulations with a focus on intensive computation on both CPUs and GPUs. This expertise led to the development of the CIVA software platform \cite{civaweb} that provides multiple non destructive testing simulation and analysis tools. It is distributed worldwide and serves as a de facto standard in the nondestructive testing industry. Some of its software components are used on industrial embedded nondestructive techniques solutions that enable real-time treatments for ultrasonic imaging. During the past few years, the DISC has also been developing a novel technique for structural health monitoring that produces tomography images from structural noise \cite{druet2019passive}. 
+
+This work will be part of the collaborative process carried out by the SACHEMS platform led by the CEA and funded by the Ile de France Region \cite{SACHEMS}.
+
+ \paragraph{PhD Candidate Profile.} Such an interdisciplinary project in parallel computing applied to passive tomography will require strong skills in computer science (e.g. CUDA/OpenCL) and a good level in signal processing. \\
+\bibliographystyle{IEEEtran}
+%\bibliographystyle{agsm}
+\setlength{\bibsep}{0.pt} 
+%\renewcommand{\bibsection}{}
+\bibliography{gac.bib,cea.bib}
+
+
+}
+
+\end{document}
